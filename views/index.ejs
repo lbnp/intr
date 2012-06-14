@@ -1,7 +1,11 @@
 <h1><%= title %></h1>
-<p><form method="POST" action="/intr"><input type="text" name="who"><input type="submit"></form></p>
+<p><form method="POST" action="/intr"><input type="text" name="who" placeholder="who"><input type="text" name="what" placeholder="what"><input type="submit"></form></p>
 <ul>
 <% intr.forEach(function(interrupt) { %> 
-<li><%= interrupt.time %> by <%= interrupt.who %> <form method="POST" action="/delete"><input type="hidden" name="_method" value="delete"><input type="hidden" name="key" value="<%= interrupt._id %>"><input type="submit" value="delete"></form></li>
+<li><%= interrupt.time %> by <%= interrupt.who %>
+<% if ( interrupt.what != undefined ) { %>
+ on <%= interrupt.what %>
+<% } %>
+<form method="POST" action="/delete"><input type="hidden" name="_method" value="delete"><input type="hidden" name="key" value="<%= interrupt._id %>"><input type="submit" value="delete"></form></li>
 <% }); %>
 </ul>

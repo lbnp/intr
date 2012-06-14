@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 
 var intrSchema = new Schema({
 	time: Date,
-	who: String
+	who: String,
+	what: String
 });
 
 module.exports = mongoose.model('Intr', intrSchema);

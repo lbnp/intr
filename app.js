@@ -38,7 +38,11 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.post('/intr', function(req, res) {
 	if (req.body.who) {
-		new Intr({time: new Date, who: req.body.who}).save(function(err) {
+		var what = undefined;
+		if (req.body.what.length > 0) {
+			what = req.body.what;
+		}
+		new Intr({time: new Date, who: req.body.who, what: what }).save(function(err) {
 			res.redirect('/');
 		});
 	}
